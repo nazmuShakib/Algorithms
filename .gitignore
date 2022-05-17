@@ -1,0 +1,4 @@
+/testing*
+*.out
+*.txt
+*.dbg
