@@ -6,8 +6,9 @@
 
 using namespace std;
 
-template <typename T>
-vector<int> suffixArray(const T& s) {
+template <typename T, typename U>
+vector<int> suffixArray(T s, U separator) {
+	s.push_back(separator);
 	int  n = (int) s.size();
 	vector<int> order(n), classes(n);
 	iota(begin(order), end(order), 0);
@@ -55,6 +56,7 @@ vector<int> suffixArray(const T& s) {
 		swap(classes, newClasses);
 		++k;
 	}
+	order.erase(begin(order));
 	// 0 based index
 	return order;
 }
@@ -70,11 +72,11 @@ int32_t main()
 	for (int& x : a) cin >> x;
 	string str;
 	cin >> str;
-	auto v = suffixArray(str);
+	auto v = suffixArray(str, '$');
 	for (int i = 0; i < (int) v.size(); ++i) {
 		cout << v[i] << " \n"[i + 1 == (int) v.size()];
 	}
-	auto u = suffixArray(a);
+	auto u = suffixArray(a, INT32_MIN);
 	for (int i = 0; i < (int) u.size(); ++i) {
 		cout << u[i] << " \n"[i + 1 == (int) u.size()];
 	}
