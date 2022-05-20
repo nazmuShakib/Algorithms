@@ -70,10 +70,12 @@ int32_t main()
 	for (int& x : a) cin >> x;
 	string str;
 	cin >> str;
+	str += '$';
 	auto v = suffixArray(str);
 	for (int i = 0; i < (int) v.size(); ++i) {
 		cout << v[i] << " \n"[i + 1 == (int) v.size()];
 	}
+	a.emplace_back(INT32_MIN);
 	auto u = suffixArray(a);
 	for (int i = 0; i < (int) u.size(); ++i) {
 		cout << u[i] << " \n"[i + 1 == (int) u.size()];
